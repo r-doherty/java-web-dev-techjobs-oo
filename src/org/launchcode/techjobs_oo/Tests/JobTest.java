@@ -9,8 +9,6 @@ import org.launchcode.techjobs_oo.Location;
 import org.launchcode.techjobs_oo.PositionType;
 import org.launchcode.techjobs_oo.CoreCompetency;
 
-import java.time.LocalDateTime;
-
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -19,12 +17,17 @@ public class JobTest {
     Job job2;
     Job job2Duplicate;
     Job job3;
+    Job job4;
+    Job job5;
 
     @Before
     public void createJobObjects() {
-        job1 = new Job("Front-end Developer", new Employer("ShotTracker"), new Location("Kansas City"), new PositionType("Marketing"), new CoreCompetency("React"));
+        job1 = new Job("Software Developer", new Employer("ShotTracker"), new Location("Kansas City"), new PositionType("Marketing"), new CoreCompetency("React"));
         job2 = new Job("Custom Solutions Developer", new Employer("VMLY&R"), new Location("Chicago, IL"), new PositionType("Client Services"), new CoreCompetency("JavaScript"));
         job2Duplicate = new Job("Custom Solutions Developer", new Employer("VMLY&R"), new Location("Chicago, IL"), new PositionType("Client Services"), new CoreCompetency("JavaScript"));
+        job4 = new Job("", new Employer("Crema"), new Location(), new PositionType(), new CoreCompetency());
+        job5 = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+
     }
 
     @Test
@@ -55,6 +58,33 @@ public class JobTest {
         assertFalse(job2Duplicate.equals(job2));
     }
 
+    @Test
+    public void testJobFormat1() {
+        assertTrue(job1.toString().startsWith("\n"));
+        assertTrue(job1.toString().endsWith("\n"));
+    }
 
+    @Test
+    public void testJobFormat2() {
+        assertTrue(job1.toString().contains("ID: " + job1.getId()));
+        assertTrue(job1.toString().contains("Name: " + job1.getName()));
+        assertTrue(job1.toString().contains("Employer: " + job1.getEmployer()));
+        assertTrue(job1.toString().contains("Location: " + job1.getLocation()));
+        assertTrue(job1.toString().contains("Position Type: " + job1.getPositionType()));
+        assertTrue(job1.toString().contains("Core Competency: " + job1.getCoreCompetency()));
+    }
+
+    @Test
+    public void testJobFormat3() {
+        assertTrue(job4.toString().contains("Name: Data not available"));
+        assertTrue(job4.toString().contains("Location: Data not available"));
+        assertTrue(job4.toString().contains("Position Type: Data not available"));
+        assertTrue(job4.toString().contains("Core Competency: Data not available"));
+    }
+
+    @Test
+    public void testJobFormat4() {
+        assertTrue(job5.toString().contains("OOPS! This job does not seem to exist"));
+    }
 
 }

@@ -10,6 +10,7 @@ public class PositionType {
     public PositionType() {
         id = nextId;
         nextId++;
+        this.value = "Data not available";
     }
 
     public PositionType(String value) {
@@ -21,9 +22,7 @@ public class PositionType {
 
     @Override
     public String toString() {
-        return "PositionType{" +
-                "value='" + value + '\'' +
-                '}';
+        return value;
     }
 
 

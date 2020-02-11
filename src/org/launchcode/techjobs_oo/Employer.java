@@ -10,6 +10,7 @@ public class Employer {
     public Employer() {
         id = nextId;
         nextId++;
+        this.value = "Data not available";
     }
 
     public Employer(String value) {

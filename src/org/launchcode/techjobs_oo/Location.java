@@ -10,6 +10,7 @@ public class Location {
     public Location() {
         id = nextId;
         nextId++;
+        this.value = "Data not available";
     }
 
     // TODO: Add a constructor that takes a string as a parameter and assigns it to the 'value' field. The
