@@ -84,7 +84,7 @@ public class JobTest {
 
     @Test
     public void testJobFormat4() {
-        assertTrue(job5.toString().contains("OOPS! This job does not seem to exist"));
+        assertTrue(job5.toString().equals("OOPS! This job does not seem to exist."));
     }
 
 }
